@@ -19,7 +19,10 @@ require("mason_config")
 require("lsp_config")
 require("treesitter_config")
 
-vim.api.nvim_create_autocmd({'VimEnter'}, {command="NERDTree TSUpdate"})
+vim.api.nvim_create_autocmd({'VimEnter'}, {command="NERDTree"})
+vim.api.nvim_create_autocmd({'VimEnter'}, {command="TSUpdate"})
+
+vim.cmd [[ cd ~/Documents/ ]]
 
 -- Setting theme colours
 if(vim.fn.has("termguicolors")) then 
