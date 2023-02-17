@@ -1,19 +1,20 @@
 vim.opt.number = true
- --[[
-function LoadPageToBrowser()
-	local filepath = vim.fn.expand("%:p")
-	io.popen("start firefox " .. filepath)
-end
 
-function noremap(mode, lhs, rhs, opts) 
-	local options = { noremap = true }
-    	if opts then
-        	options = vim.tbl_extend("force", options, opts)
-    	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local powershell_opts = {
+	shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
+	shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+	shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+	shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+	shellquote = "",
+	shellxquote = ""
+}
 
-vim.api.nvim_create_user_command("LoadPageToBrowser", function() LoadPageToBrowser() end, {nargs = 0, desc = 'Load html to browser'})
-noremap('n', "<F2>", ":LoadPageToBrowser", {})]]--
+--set shell to powershell if in windows
+if(vim.fn.has("win32")) then
+	for option, v in pairs(powershell_opts) do
+		vim.opt[option] = v
+	end
+end
 
 require ("cpp_plugins")
+require ("hotkeys")

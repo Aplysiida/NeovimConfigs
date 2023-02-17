@@ -13,7 +13,6 @@ function noremap(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-vim.api.nvim_create_user_command("LoadPageToBrowser", function() LoadPageToBrowser() end, {nargs = 0, desc = 'Load html to browser'})
-noremap('n', "<F2>", ":LoadPageToBrowser", {})
+noremap('n', "<F2>", "<cmd>lua LoadPageToBrowser()<CR>", {})
 
 require ("webdev_plugins")

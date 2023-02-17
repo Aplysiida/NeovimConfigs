@@ -44,7 +44,3 @@ lsp_config.clangd.setup({
     on_attach = on_attach,
     flags = lsp_flags
 })
---[[lsp_config.html.setup({
-    on_attach = on_attach,
-    flags = lsp_flags,
-})--]]
