@@ -9,6 +9,8 @@ Plug "williamboman/mason-lspconfig.nvim"
 Plug "neovim/nvim-lspconfig"
 --debugger
 Plug "puremourning/vimspector"
+--code completion
+Plug ("neoclide/coc.nvim", {branch = "release"}) --, {'branch': 'release'}
 --visuals
 -- Plug "nvim-treesitter/nvim-treesitter" used for improved highlighting, doesn't work with lua
 Plug "preservim/nerdtree"

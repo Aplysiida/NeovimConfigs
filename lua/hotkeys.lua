@@ -35,5 +35,14 @@ function noremap(mode, lhs, rhs, opts)
 end
 
 --noremap('n', "<F5>", "<cmd>lua CompileRunCpp()<CR>", {})
---vimspector mappings
+ --vimspector mappings
 vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
+
+--coc mappings
+noremap('i', "<CR>", "coc#pum#visible() ? coc#pum#confirm() : '<C-g>u<CR>'", {expr = true, silent = true, replace_keycodes = false})
+vim.api.nvim_create_augroup("CocGroup", {})
+vim.api.nvim_create_autocmd("CursorHold", {
+	group = "CocGroup",
+	command = "silent call CocActionAsync('highlight')",
+	desc = "Highlight symbol under cursor on CursorHold"
+})

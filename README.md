@@ -1,7 +1,7 @@
 # NeovimConfigs
 Neovim config. Plugins are installed using vim-plug(https://github.com/junegunn/vim-plug).
 Requires:
-- node.js(Mason)
+- node.js(Mason, Coc)
 - python3 with neovim package (Vimspector)
 - gcc(Treesitter)
 
@@ -10,3 +10,7 @@ Using vimspector VS-Code mappings for now(https://github.com/puremourning/vimspe
 
 ## Project requirements for DAP to work
 vimspector.json file describing what DAP to use for project (https://github.com/puremourning/vimspector#launch-and-attach-by-pid)
+
+## Todo: example of config setup for cpp
+- PlugInstall
+- CocInstall coc-clangd
