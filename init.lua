@@ -16,5 +16,5 @@ if(vim.fn.has("win32")) then
 	end
 end
 
-require ("cpp_plugins")
+require ("plugins")
 require ("hotkeys")

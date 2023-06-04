@@ -39,8 +39,8 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- Add new languages here (remember to install using Mason first)
 lsp_config.clangd.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     flags = lsp_flags
 })

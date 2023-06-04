@@ -34,4 +34,6 @@ function noremap(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-noremap('n', "<F5>", "<cmd>lua CompileRunCpp()<CR>", {})
+--noremap('n', "<F5>", "<cmd>lua CompileRunCpp()<CR>", {})
+--vimspector mappings
+vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
