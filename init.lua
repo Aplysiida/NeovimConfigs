@@ -1,5 +1,23 @@
 vim.opt.number = true
+--dont care abt these providers for now
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+--need xclip
+vim.g.clipboard = {
+	name = 'xclip-xfce4-clipman',
+	copy = {
+		["+"] = {'xclip', '-selection', 'clipboard'},
+		["*"] = {'xclip -selection clipboard'},
+	},
+	paste = {
+		["+"] = {'xclip', 'selection', 'clipboard', '-o'},
+		["*"] = {'xclip', '-o', '-selection', 'clipboard'},
+	},
+	cache_enabled = true,
+}
 
+--works in windows, not here though
+--[[
 local powershell_opts = {
 	shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
 	shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
@@ -15,6 +33,7 @@ if(vim.fn.has("win32")) then
 		vim.opt[option] = v
 	end
 end
+--]]
 
 require ("plugins")
 require ("hotkeys")

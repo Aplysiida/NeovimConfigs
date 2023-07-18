@@ -1,29 +1,11 @@
--- Get g++ command for current cpp file
-function GetCompileRunCmd (cpp_path, exe_path)
-	local flags = " -Wall -std=c++17 "
-
-	local compile_cmd = "g++ " .. cpp_path
-	compile_cmd = compile_cmd .. flags
-
-	local run_cmd = " -o " .. exe_path
-	run_cmd = run_cmd .. " | "
-	run_cmd = run_cmd .. exe_path
-
-    return compile_cmd .. run_cmd
-end
-
-local Terminal = require("toggleterm.terminal").Terminal
-local compile_term = Terminal:new({cmd = GetCompileRunCmd("",""), hidden = true})
-
 -- Run g++ command only for cpp files
-function CompileRunCpp()
-    local cpp_path = vim.fn.expand("%:p")
-    if(string.sub(cpp_path, -4, -1) == ".cpp") then
-        compile_term.cmd = GetCompileRunCmd(cpp_path, vim.fn.expand("%:p:r"))
-        compile_term:toggle()
-    else
-        print("Not a cpp file!")
-    end
+function BuildAndDebug()
+	local filepath =  vim.fn.getcwd() .. "/build/"
+	--call build script
+	os.execute("cd " .. filepath)
+	os.execute("./debug.sh")
+	--call debug on output
+	vim.cmd("call vimspector#Launch")
 end
 
 function noremap(mode, lhs, rhs, opts)
@@ -34,9 +16,11 @@ function noremap(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
---noremap('n', "<F5>", "<cmd>lua CompileRunCpp()<CR>", {})
- --vimspector mappings
-vim.g.vimspector_enable_mappings = 'VISUAL_STUDIO'
+--vimspector mappings
+vim.g.vimspector_enable_mappings = 'HUMAN'
+--TODO:replace F5 with build and debug
+--noremap('n', "<F5>", "<cmd>lua BuildAndDebug()<CR>", {})
+noremap('n', "<F2>", "<cmd>TagbarToggle<CR>", {})
 
 --coc mappings
 noremap('i', "<CR>", "coc#pum#visible() ? coc#pum#confirm() : '<C-g>u<CR>'", {expr = true, silent = true, replace_keycodes = false})

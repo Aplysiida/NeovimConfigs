@@ -10,13 +10,13 @@ Plug "neovim/nvim-lspconfig"
 --debugger
 Plug "puremourning/vimspector"
 --code completion
-Plug ("neoclide/coc.nvim", {branch = "release"}) --, {'branch': 'release'}
+Plug ("neoclide/coc.nvim", {branch = "release", ['do'] = "yarn install --frozen-lockfile"})
+--ctags
+Plug "ludovicchabant/vim-gutentags"
+Plug "preservim/tagbar"
 --visuals
--- Plug "nvim-treesitter/nvim-treesitter" used for improved highlighting, doesn't work with lua
 Plug "preservim/nerdtree"
-Plug "akinsho/toggleterm.nvim"
 Plug "lukas-reineke/indent-blankline.nvim"
---Plug "Yggdroot/indentLine"
 Plug "morhetz/gruvbox"
 
 vim.call("plug#end")
