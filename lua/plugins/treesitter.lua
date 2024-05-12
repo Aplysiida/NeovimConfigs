@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	commit = "",
+	commit = "e6cd337e30962cc0982d51fa03beedcc6bc70e3d",
 	build = {
 		":TSUpdate",
 		-- from 
