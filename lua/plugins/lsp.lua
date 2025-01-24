@@ -9,5 +9,12 @@ return {
   config = function(_,opts)
     --cannot lazy load mason
     require("mason").setup()
+
+    local servers = {"glsl_analyzer", "julials", "clangd"}
+
+    for _, lsp in ipairs(servers) do
+    	require("lspconfig")[lsp].setup{}
+    end
+
   end,
 }

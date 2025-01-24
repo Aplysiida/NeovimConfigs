@@ -9,4 +9,4 @@ for _, module_name in ipairs(conf_files) do
 	require(module_name)
 end
 
-vim.cmd("colorscheme srcery")
+vim.cmd("colorscheme cyberdream")

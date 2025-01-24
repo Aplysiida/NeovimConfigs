@@ -14,11 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 
 -- List of plugins and their configs here --
 local plugins = {
-	{"srcery-colors/srcery-vim"},
-	{"Yggdroot/indentLine"},
+        {"Yggdroot/indentLine"},
+        require("plugins.cyberdream"),
 	require("plugins.lsp"),
         require("plugins.treesitter"),
         require("plugins.cmp"),
+        require("plugins.telescope"),
 }
 
 local lazy_opt = {
